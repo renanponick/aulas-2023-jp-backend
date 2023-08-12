@@ -1,13 +1,9 @@
 // Importa o módulo 'express' para uso no código.
 import express from "express";
-import { exercicio1 } from "./exercicios/exercicios.js";
+import { exercicio1 } from "./exercicios/exercicios-parte-um.js";
 
 // Cria uma instância do aplicativo Express.
 const app = express();
-
-app.get("/api/pessoa/", (req, res) => {
-    res.json({ message: "Hello World!" });
-});
 
 app.get("/api/pessoa/:id", (req, res) => {
     const nome = req.query.nome;
@@ -22,16 +18,7 @@ app.post("/api/pessoa/", (req, res) => {
     res.json({ message: "Hello World!" });
 });
 
-app.put("/api/pessoa/:id", (req, res) => {
-    res.json({ message: "Hello World!" });
-});
-
-app.delete("/api/pessoa/:id", (req, res) => {
-    res.json({ message: "Hello World!" });
-});
-
-
-app.get("/api/exercicio1", (req, res) => {
+app.get("/api/exercicioum", (req, res) => {
     const num1 = parseFloat(req.query.num1);
     const num2 = parseFloat(req.query.num2);
 
