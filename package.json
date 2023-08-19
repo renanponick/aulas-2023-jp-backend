@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "jest test/index.test.js",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
+    "test:cov": "yarn node --experimental-vm-modules $(yarn bin jest) --coverage"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
+    "jest": "^29.6.2",
     "nodemon": "^3.0.1"
   }
 }

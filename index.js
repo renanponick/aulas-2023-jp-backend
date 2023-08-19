@@ -17,7 +17,7 @@ app.get("/api/pessoa/:id", (req, res) => {
     });
 });
 
-app.post("/api/pessoa/", (req, res) => {
+app.get("/api/pessoa/", (req, res) => {
     res.json({ message: "Hello World!" });
 });
 
@@ -40,7 +40,7 @@ app.post("/api/exercicio", (req, res) => {
 });
 
 // Inicia o servidor Express na porta 3000 e define uma função de retorno de chamada.
-app.listen(3001, () => {
+app.listen(3000, () => {
     // Exibe uma mensagem no console quando o servidor estiver ativo.
     console.log("Servidor rodando na porta 3000");
 });
