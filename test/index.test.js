@@ -15,16 +15,21 @@ describe('Testes do primeiro exercício', () => {
       console.info('Encerrados os testes');
    });
 
-   it('Should sum two numbers', () => {
-      const result = servico.Calcular(1, 2)
+   it('Should add a name', () => {
+      const qtde = servico.PegarTodos().length
+      servico.Adicionar("Joao")
+      const qtdeAfter = servico.PegarTodos().length
       
-      expect(result).toBe(3);
+      expect(qtdeAfter).toBe(qtde + 1);
    })
 
-   it('Should sum two numbers', () => {
-      const result = () => servico.Calcular('a', '2')
-      
-      expect(result).toThrow('Favor informar números');
+   it('Should add a name and validate', () => {
+      const nome = "Lucas"
+      servico.Adicionar(nome)
+
+      const addedNome = servico.PegarUm(servico.PegarTodos().length - 1)
+      console.log(addedNome)
+      expect(nome).toBe(addedNome);
    })
 
 })
