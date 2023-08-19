@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { exercicio1 } from "../exercicios/exercicios-parte-um";
 
 describe('Testes do primeiro exercício', () => {
