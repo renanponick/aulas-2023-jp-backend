@@ -10,6 +10,16 @@ const { development } = require('./config');
   
 // INSERT INTO pessoas (nome, email, senha) VALUES ('João da Silva', 'joao@example.com', 'senha123');
 
+// CREATE TABLE Cachorros (
+//   id INT AUTO_INCREMENT PRIMARY KEY,
+//   nome VARCHAR(255) NOT NULL,
+//   raca VARCHAR(255),
+//   pessoa_id INT,
+//   FOREIGN KEY (pessoa_id) REFERENCES Pessoa(id)
+// );
+
+// INSERT INTO Cachorros (nome, raca, pessoa_id) VALUES ('Fido', 'Labrador', 1);
+// INSERT INTO Cachorros (nome, raca, pessoa_id) VALUES ('Rex', 'Golden Retriever', 1);
 
 const sequelize = new Sequelize(development)
 sequelize.sync()
