@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "dev": "jest test/index.test.js",
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
-    "test:cov": "yarn node --experimental-vm-modules $(yarn bin jest) --coverage"
+    "dev": "",
+    "test": "jest test/**.test.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +19,9 @@
   },
   "homepage": "https://github.com/renanponick/javascript#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0"
   },
   "devDependencies": {
     "jest": "^29.6.2",

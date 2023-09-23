@@ -1,5 +1,5 @@
-import { describe, expect, it } from '@jest/globals';
-import ServicoExercicio from "../src/services/exercicios";
+const { describe, expect, it } = require('@jest/globals');
+const ServicoExercicio = require("../src/services/pessoa");
 
 describe('Testes do primeiro exercício', () => {
 

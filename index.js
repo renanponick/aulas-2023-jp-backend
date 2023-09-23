@@ -1,5 +1,5 @@
-import express from "express";
-import routers from "./src/routes/exercicios.js";
+const express = require("express");
+const routers = require("./src/routes/pessoa.js");
 
 const app = express();
 
