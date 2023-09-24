@@ -1,13 +1,43 @@
 const ServicoExercicio = require("../services/pessoa.js");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require("../config.js");
 
 const servico = new ServicoExercicio()
+
 class ControllerExercicio {
 
+    async Login(req, res){
+      const { email, senha } = req.body;
+    
+      const { dataValues: pessoa } = await servico.PegarUmPorEmail(email);
+      
+      if (!pessoa) {
+          return res.status(401).json({ mensagem: 'Credenciais inválidas' });
+      }
+      console.log(pessoa.senha, senha)
+      if (!(await bcrypt.compare(senha, pessoa.senha))) {
+          return res.status(401).json({ mensagem: 'Credenciais inválidas' });
+      }
+      
+      const token = jwt.sign(
+          { id: pessoa.id, nome: pessoa.nome, email: pessoa.email },
+          config.secret
+      );
+      
+      res.json({ mensagem: 'Login bem-sucedido', token });
+    }
+
     async PegarUm(req, res){
+      const { nome } = req.session
       try {
         const id = req.params.id
 
         const result = await servico.PegarUm(id)
+
+        if(!result) {
+          return res.status(404).json({ message: "Lamentamos, " + nome + ", id não encontrado!" });
+        }
         
         res.status(200).json(result);
       } catch (error) {

@@ -5,10 +5,11 @@ const { development } = require('./config');
 //     id INT AUTO_INCREMENT PRIMARY KEY,
 //     nome VARCHAR(255) NOT NULL,
 //     email VARCHAR(255) NOT NULL UNIQUE,
-//     senha VARCHAR(255)
+//     senha VARCHAR(255),
+//     permissao INT NOT NULL DEFAULT 1
 //   );
   
-// INSERT INTO pessoas (nome, email, senha) VALUES ('João da Silva', 'joao@example.com', 'senha123');
+// INSERT INTO pessoas (nome, email, senha) VALUES ('João da Silva', 'joao@example.com', '$2a$10$M6Zd8as/LPOT4MEwQ6MOGuSYZlzXuTF30R2NgY/xdWzPsZ5lpBeZm');
 
 // CREATE TABLE Cachorros (
 //   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,6 +21,10 @@ const { development } = require('./config');
 
 // INSERT INTO Cachorros (nome, raca, pessoa_id) VALUES ('Fido', 'Labrador', 1);
 // INSERT INTO Cachorros (nome, raca, pessoa_id) VALUES ('Rex', 'Golden Retriever', 1);
+
+
+
+
 
 const sequelize = new Sequelize(development)
 sequelize.sync()

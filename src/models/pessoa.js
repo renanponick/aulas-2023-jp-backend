@@ -19,6 +19,10 @@ const Pessoa = sequelize.define('pessoas', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    permissao: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
 }, {
     createdAt: false,
     updatedAt: false

@@ -10,6 +10,13 @@ class ServicoExercicio {
       return repositorio.PegarUm(id)
     }
 
+    async PegarUmPorEmail(email){
+      if(!email.trim()) {
+        throw new Error("Preencha o email")
+      }
+      return repositorio.PegarUmPorEmail(email)
+    }
+
     async PegarTodos(){
       return repositorio.PegarTodos()
     }

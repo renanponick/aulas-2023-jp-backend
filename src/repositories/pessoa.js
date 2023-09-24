@@ -10,12 +10,22 @@ class RepositorioExercicio {
         })
     }
 
+    async PegarUmPorEmail(email){
+        return Pessoa.findOne({
+            where: {
+                email
+            }
+        })
+    }
+
     async PegarTodos(){
         return Pessoa.findAll()
     }
 
     async Adicionar(pessoa){
-        return Pessoa.create({ ...pessoa})
+        const senha = await bcrypt.hash(pessoa.senha, 10)
+
+        return Pessoa.create({ ...pessoa, senha })
     }
 
     async Alterar(id, pessoa){
