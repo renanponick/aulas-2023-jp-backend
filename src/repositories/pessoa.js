@@ -22,10 +22,10 @@ class RepositorioExercicio {
         return Pessoa.findAll()
     }
 
-    async Adicionar(pessoa){
+    async Adicionar(pessoa, isAdmin = false){
         const senha = await bcrypt.hash(pessoa.senha, 10)
 
-        return Pessoa.create({ ...pessoa, senha })
+        return Pessoa.create({ ...pessoa, senha, permissao: isAdmin ? 0 : 1 })
     }
 
     async Alterar(id, pessoa){

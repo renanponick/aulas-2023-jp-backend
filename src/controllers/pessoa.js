@@ -71,6 +71,21 @@ class ControllerExercicio {
       }
     }
 
+    async AdicionarAdmin(req, res){
+      try {
+        const { pessoa } = req.body
+
+        await servico.Adicionar(pessoa, true)
+        
+        res.status(201).json({ message: "Adicionado com sucesso!"});
+      } catch (error) {
+        if(error.parent.code === "ER_DUP_ENTRY") {
+          res.status(500).json({ message: "Email já cadastrado!"});
+        }
+        res.status(500).json({ message: error.parent.message || error.message});
+      }
+    }
+
     async Alterar(req, res){
       try {
         const id = req.params.id
