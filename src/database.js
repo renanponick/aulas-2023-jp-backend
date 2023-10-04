@@ -1,5 +1,7 @@
 const { Sequelize } = require('sequelize');
 const { development } = require('./config');
+const Pessoa = require('./models/pessoa');
+const Cachorro = require('./models/cachorro');
 
 // CREATE TABLE pessoas (
 //     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,7 +17,7 @@ const { development } = require('./config');
 //   nome VARCHAR(255) NOT NULL,
 //   raca VARCHAR(255),
 //   pessoa_id INT,
-//   FOREIGN KEY (pessoa_id) REFERENCES Pessoa(id)
+//   FOREIGN KEY (pessoa_id) REFERENCES pessoas(id)
 // );
 
 // INSERT INTO Cachorros (nome, raca, pessoa_id) VALUES ('Fido', 'Labrador', 1);

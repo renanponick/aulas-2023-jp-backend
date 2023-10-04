@@ -6,7 +6,8 @@ class RepositorioExercicio {
         return Pessoa.findOne({
             where: {
                 id
-            }
+            },
+            include: ['Cachorros']
         })
     }
 
