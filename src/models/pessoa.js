@@ -24,6 +24,8 @@ const Pessoa = sequelize.define('pessoas', {
     createdAt: false,
     updatedAt: false
 });
+
+Cachorro.belongsTo(Pessoa, { foreignKey: 'pessoaId' });
 Pessoa.hasMany(Cachorro, { foreignKey: 'pessoaId' });
 
 module.exports = Pessoa;
