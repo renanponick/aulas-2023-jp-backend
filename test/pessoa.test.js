@@ -5,16 +5,16 @@ const conexao = require('../src/database')
 describe('Testes pessoas', () => {
 
    beforeAll(async () => {
-      this.save = await conexao.transaction()
+      this.transaction = await conexao.transaction()
    })
    afterAll(async () => {
-      this.save.rollback()
+      this.transaction.rollback()
    })
 
    const servico = new ServicoExercicio()
    
    it('Should get person', async () => {
-      const result = await servico.PegarUm(1, this.save)
+      const result = await servico.PegarUm(1, this.transaction)
 
       expect(result.id).toBe(1);
       expect(result.nome).toBe('joao');
@@ -23,11 +23,11 @@ describe('Testes pessoas', () => {
    })
 
    it('Should create a person', async () => {
-      const result = await servico.Add({
+      const result = await servico.Adicionar({
          nome: 'joao',
          email: 'teste2@teste.com',
          senha: '123456'
-      }, this.save)
+      }, this.transaction)
 
       expect(result.nome).toBe('joao');
       expect(result.email).toBe('teste2@teste.com');

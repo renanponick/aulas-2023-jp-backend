@@ -15,8 +15,10 @@ class RepositorioExercicio {
         return Pessoa.findAll()
     }
 
-    async Adicionar(pessoa){
-        return Pessoa.create({ ...pessoa})
+    async Adicionar(pessoa, transaction){
+        return Pessoa.create(pessoa, {
+            transaction
+        })
     }
 
     async Alterar(id, pessoa){
