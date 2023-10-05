@@ -1,35 +1,37 @@
-const { describe, expect, it } = require('@jest/globals');
-const ServicoExercicio = require("../src/services/pessoa");
+const { describe, expect, it, beforeAll, afterAll } = require('@jest/globals')
+const ServicoExercicio = require("../src/services/pessoa")
+const conexao = require('../src/database')
 
-describe('Testes do primeiro exercício', () => {
+describe('Testes pessoas', () => {
 
-   const servico = new ServicoExercicio()
-
-   // Executado antes de TODOS os testes
    beforeAll(async () => {
-      console.info('Iniciando TDD com jest!');
-   });
-
-   // Executado após TODOS os testes
-   afterAll(() => {
-      console.info('Encerrados os testes');
-   });
-
-   it('Should add a name', () => {
-      const qtde = servico.PegarTodos().length
-      servico.Adicionar("Joao")
-      const qtdeAfter = servico.PegarTodos().length
-      
-      expect(qtdeAfter).toBe(qtde + 1);
+      this.save = await conexao.transaction()
+   })
+   afterAll(async () => {
+      this.save.rollback()
    })
 
-   it('Should add a name and validate', () => {
-      const nome = "Lucas"
-      servico.Adicionar(nome)
+   const servico = new ServicoExercicio()
+   
+   it('Should get person', async () => {
+      const result = await servico.PegarUm(1, this.save)
 
-      const addedNome = servico.PegarUm(servico.PegarTodos().length - 1)
-      console.log(addedNome)
-      expect(nome).toBe(addedNome);
+      expect(result.id).toBe(1);
+      expect(result.nome).toBe('joao');
+      expect(result.email).toBe('teste@teste.com');
+      expect(result.senha).toBe('123456');
+   })
+
+   it('Should create a person', async () => {
+      const result = await servico.Add({
+         nome: 'joao',
+         email: 'teste2@teste.com',
+         senha: '123456'
+      }, this.save)
+
+      expect(result.nome).toBe('joao');
+      expect(result.email).toBe('teste2@teste.com');
+      expect(result.senha).toBe('123456');
    })
 
 })
