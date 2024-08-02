@@ -1,5 +1,5 @@
-import express from "express";
-import ControllerExercicio from "../controllers/exercicios.js";
+const express = require("express");
+const ControllerExercicio = require("../controllers/exercicios.js");
 
 const router = express.Router();
 
@@ -11,4 +11,4 @@ router.post("/api/nome", controllers.Adicionar);
 router.put("/api/nome/:index", controllers.Alterar);
 router.delete("/api/nome/:index", controllers.Deletar);
 
-export default router;
+module.exports = router;

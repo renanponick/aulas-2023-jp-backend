@@ -1,7 +1,7 @@
 // const meuArray = new Array();
 const nomes = new Array("Alice", "Bob", "Charlie");
 
-export default class RepositorioExercicio {
+class RepositorioExercicio {
 
     PegarUm(index){
         return nomes[index]
@@ -24,3 +24,5 @@ export default class RepositorioExercicio {
     }
 
 }
+
+module.exports = RepositorioExercicio;

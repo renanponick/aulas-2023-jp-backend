@@ -1,7 +1,7 @@
-import RepositorioExercicio from "../repositories/exercicios.js"
+const RepositorioExercicio = require("../repositories/exercicios.js")
 
 const repositorio = new RepositorioExercicio()
-export default class ServicoExercicio {
+class ServicoExercicio {
 
     PegarUm(index){
         return repositorio.PegarUm(index)
@@ -37,3 +37,5 @@ export default class ServicoExercicio {
     }
 
 }
+
+module.exports = ServicoExercicio;
