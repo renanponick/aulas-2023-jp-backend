@@ -1,8 +1,8 @@
-import ServicoExercicio from "../services/exercicios.js";
+const ServicoExercicio = require("../services/exercicios.js");
 
 const servico = new ServicoExercicio()
 
-export default class ControllerExercicio {
+class ControllerExercicio {
 
   Calcular(req, res) {
     try {
@@ -17,3 +17,5 @@ export default class ControllerExercicio {
   }
 
 }
+
+module.exports = ControllerExercicio;
