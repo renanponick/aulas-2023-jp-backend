@@ -1,21 +1,21 @@
-const RepositorioExercicio = require("../repositories/exercicios.js")
+const modelExercicio = require("../models/exercicios.js")
 
-const repositorio = new RepositorioExercicio()
+const model = new modelExercicio()
 class ServicoExercicio {
 
     PegarUm(index){
-        return repositorio.PegarUm(index)
+        return model.PegarUm(index)
     }
 
     PegarTodos(){
-        return repositorio.PegarTodos()
+        return model.PegarTodos()
     }
 
     Adicionar(nome){
         if(!nome) {
           throw new Error("Favor preencher o nome.")
         }
-        repositorio.Adicionar(nome)
+        model.Adicionar(nome)
     }
 
     Alterar(index, nome){
@@ -25,7 +25,7 @@ class ServicoExercicio {
         throw new Error("Favor corretamente o index.")
       }
 
-      repositorio.Adicionar(nome)
+      model.Adicionar(nome)
     }
 
     Deletar(index){
@@ -33,7 +33,7 @@ class ServicoExercicio {
         throw new Error("Favor corretamente o index.")
       }
 
-      repositorio.Deletar(index)
+      model.Deletar(index)
     }
 
 }
